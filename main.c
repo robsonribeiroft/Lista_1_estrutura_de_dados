@@ -244,8 +244,8 @@ void question_three(){
 
 int primo(int num){
     int i;
-    if (num==0) return 0;
-    else if (num==1 || num==2) return 1;
+    if (num==0 || num==1) return 0;
+    else if (num==2) return 1;
     else{
         for(i=3; i<sqrt(num)+1; i++){
             if (num%i==0) return 0;
