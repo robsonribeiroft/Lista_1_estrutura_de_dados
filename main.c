@@ -38,9 +38,7 @@ void mostra_lista(int vetor[], int tam_vetor){
 int cont_elemt_par(int vetor[], int tam_vetor){
     int i, cont=0;
     for(i=0; i<tam_vetor; i++){
-        if (vetor[i]%2 == 0){
-            cont++;
-        }
+        if (vetor[i]%2 == 0) cont++;
     }
     return cont;
 }
@@ -171,13 +169,9 @@ int pesquisaBinaria(int vetor[], int tam_vetor, int busca){
     int menor=0, maior=tam_vetor, meio;
     while(menor <= maior){
         meio=(menor+maior)/2;
-        if(vetor[meio]==busca)
-            return meio;
-        if(vetor[meio]<busca)
-            menor = meio+1;
-        else
-            maior = meio-1;
-
+        if(vetor[meio]==busca) return meio;
+        if(vetor[meio]<busca) menor = meio+1;
+        else maior = meio-1;
     }
     return -1;
 }
@@ -211,14 +205,9 @@ void question_two(){
 
     int busca;
     printf("valor a procurar no vetor X: ");
-    fflush(stdin);
     scanf("%d", &busca);
     busca = pesquisaBinaria(vetorX, tam_vetorX, busca);
-    if(busca>=0)
-        printf("O valor esta posicao: %d\n", busca);
-    else
-        printf("Vetor nao possui valor pesquisado.\n");
-}
+    busca>=0 ? printf("O valor esta posicao: %d\n", busca) : printf("Vetor nao possui valor pesquisado.\n");
 
 void question_three(){
     int tam_vetorAB, busca, tam_vetorC, i, j=0, aux=1;
@@ -249,34 +238,20 @@ void question_three(){
             aux = 1;
         }
         i++;
-        if(i>=tam_vetorC)
-            printf("valor nao encontrado\n");
+        if(i>=tam_vetorC) printf("valor nao encontrado\n");
     }
 }
 
 int primo(int num){
-    int flag, i;
-    flag=0;
-    if (num==0)
-        return 0;
-    else if (num==1 || num==2)
-        return 1;
-    else if (num>2){
-        if (num%2==0)
-            return 0;
-        else{
-            for(i=3; i<sqrt(num)+1; i++){
-                if (num%i==0){
-                    flag++;
-                    break;
-                }
-            }
+    int i;
+    if (num==0) return 0;
+    else if (num==1 || num==2) return 1;
+    else{
+        for(i=3; i<sqrt(num)+1; i++){
+            if (num%i==0) return 0;
         }
     }
-    if(flag>0)
-        return 0;
-    else
-        return 1;
+    return 1;
 }
 
 int primoAnterior(int vetor[], int ind_primo){
@@ -291,8 +266,7 @@ int primoAnterior(int vetor[], int ind_primo){
 int primoPosterior(int vetor[], int ind_primo, int tam_vetor){
     int i;
     for(i=ind_primo+1; i<tam_vetor; i++){
-        if (primo(vetor[i]))
-            return i;
+        if (primo(vetor[i])) return i;
     }
     return -1;
 }
@@ -322,8 +296,7 @@ int repitido(int vetor[], int tam_vetor){
     int i, j;
     for(i=0; i<tam_vetor; i++){
         for(j=0; j<tam_vetor; j++){
-            if(vetor[i] == vetor[j])
-                return 1;
+            if(vetor[i] == vetor[j]) return 1;
         }
     }
     return 0;
@@ -368,14 +341,10 @@ void question_five(){
     fflush(stdin);
     scanf("%d", &busca);
     busca = pesquisaBinaria(vetor, tam_vetor, busca);
-    if(busca>=0)
-        printf("O valor se encontra na posicao: %d\n", busca);
-    else
-        printf("Valor nao enontrado\n");
-}
+    busca>=0 ? printf("O valor se encontra na posicao: %d\n", busca) : printf("Valor nao enontrado\n");
 
 int main() {
-    srand((unsigned)time(NULL)); // seed para números randômico
+    srand((unsigned)time(NULL)); // seed para nï¿½meros randï¿½mico
     question_one();
     question_two();
     question_three();
